@@ -18,8 +18,6 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-/* exported init */
-
 const GETTEXT_DOMAIN = 'gnome-amneziawg-extension@horvitz.ru';
 
 import GObject from 'gi://GObject'
@@ -83,10 +81,6 @@ var NMConnectionWireguard = class {
             item.set_name(_connection.get_id());
             item._iface = _connection.get_interface_name();
             item._connection = _connection;
-            //Working here
-            _connection.get_setting_connection().autoconnect = false;
-            _connection.commit_changes_async(true, null, null);
-            // Stop working
             let _device_list_names = this._get_device_list_names(client);
             let _state = _device_list_names.includes(_connection.get_interface_name());
             item.setToggleState(_state);
@@ -170,10 +164,17 @@ const Indicator = GObject.registerClass(
             // This part needed for the prefs
             this.settings = extensionObject.getSettings('org.gnome.shell.extensions.gnome-amneziawg-extension@horvitz.ru');
 
+            this.settings.connect('changed::show-indicator', () => {
+                this.visible = this.settings.get_boolean('show-indicator');
+            });
+
             let icon = new St.Icon({
                 style_class: 'system-status-icon',
             });
-            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/amneziawg-icon-inactive.svg`);
+
+            if (extensionObject) {
+                icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/amneziawg-icon-inactive.svg`);
+            }
             this.add_child(icon);
 
             // Create switches in the menu
@@ -222,13 +223,11 @@ export default class WireguardExtension extends Extension {
     }
 
     disable() {
+        if (this._indicator) {
+            this._indicator.destroy();
+            this._indicator = null;
+        }
         this.client = null;
         this.WireGuard = null;
-        this._indicator.destroy();
-        this._indicator = null;
     }
-}
-
-function init(meta) {
-    return new WireguardExtension(meta.uuid);
 }

@@ -15,7 +15,7 @@ echo "Creating installation directory: $INSTALL_PATH"
 mkdir -p "$INSTALL_PATH"
 
 echo "Copying files..."
-cp -r ./* "$INSTALL_PATH"
+cp -r extension.js install.sh LICENSE metadata.json prefs.js README.md shell.nix icons schemas "$INSTALL_PATH"
 
 echo "Reloading extension..."
 gnome-extensions disable "$UUID" || true

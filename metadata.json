@@ -7,5 +7,6 @@
   "gettext-domain": "gnome-amneziawg-extension@horvitz.ru",
   "url": "https://github.com/horv1tz/gnome-amneziawg-extension",
   "uuid": "gnome-amneziawg-extension@horvitz.ru",
-  "version": 1
+  "version": 1,
+  "prefs": "prefs.js"
 }

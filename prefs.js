@@ -1,11 +1,9 @@
-'use strict';
-
 import Adw from 'gi://Adw';
 import Gtk from 'gi://Gtk';
 import NM from 'gi://NM';
 import GLib from 'gi://GLib';
 
-import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 
 var WireGuardOptions = class {
@@ -167,10 +165,6 @@ var WireGuardOptions = class {
         bottom_group.add(button1);
     };
 }; // End of constructor WireGuardOptions
-
-
-function init() {
-}
 
 export default class WireguardPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
