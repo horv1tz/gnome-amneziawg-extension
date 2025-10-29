@@ -40,10 +40,9 @@ var WireGuardOptions = class {
 
         // Add the button OK
         select_win.add_button('add', -5).connect('clicked', () => {
-            select_win.destroy();
-
             // Store file choosen in conf_file
             let conf_file = select_win.get_file();
+            select_win.destroy();
 
             // Add the connection when clicking the button
             GLib.spawn_command_line_sync(`nmcli connection import type wireguard file "${conf_file.get_path()}"`);
