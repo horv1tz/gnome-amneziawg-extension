@@ -20,7 +20,7 @@
 
 /* exported init */
 
-const GETTEXT_DOMAIN = 'Wireguard-extension';
+const GETTEXT_DOMAIN = 'gnome-amneziawg-extension@horvitz.ru';
 
 import GObject from 'gi://GObject'
 import St from 'gi://St'
@@ -148,11 +148,11 @@ var NMConnectionWireguard = class {
             };
         });
         // Getting the extension object by UUID
-        let extensionObject = Extension.lookupByUUID('gnome-wireguard-extension@SJBERTRAND.github.com');
+        let extensionObject = Extension.lookupByUUID('gnome-amneziawg-extension@horvitz.ru');
         if (_wg_devices.length > 0) {
-            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/wireguard-icon.svg`);
+            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/amneziawg-icon.svg`);
         } else {
-            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/wireguard-icon-inactive.svg`);
+            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/amneziawg-icon-inactive.svg`);
         };
     };
 
@@ -162,18 +162,18 @@ var NMConnectionWireguard = class {
 const Indicator = GObject.registerClass(
     class Indicator extends PanelMenu.Button {
         _init(client, WireGuard) {
-            super._init(0.0, _('Wireguard-extension'));
+            super._init(0.0, _('AmneziaWG-extension'));
 
             // Getting the extension object by UUID
-            let extensionObject = Extension.lookupByUUID('gnome-wireguard-extension@SJBERTRAND.github.com');
+            let extensionObject = Extension.lookupByUUID('gnome-amneziawg-extension@horvitz.ru');
 
             // This part needed for the prefs
-            this.settings = extensionObject.getSettings('org.gnome.shell.extensions.gnome-wireguard-extension@SJBERTRAND.github.com');
+            this.settings = extensionObject.getSettings('org.gnome.shell.extensions.gnome-amneziawg-extension@horvitz.ru');
 
             let icon = new St.Icon({
                 style_class: 'system-status-icon',
             });
-            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/wireguard-icon-inactive.svg`);
+            icon.gicon = Gio.icon_new_for_string(`${extensionObject.path}/icons/amneziawg-icon-inactive.svg`);
             this.add_child(icon);
 
             // Create switches in the menu

@@ -29,7 +29,7 @@ var WireGuardOptions = class {
 
         let select_win = new Gtk.FileChooserDialog({
             use_header_bar: 1,
-            title: 'Choose a Wireguard .conf file',
+            title: 'Choose a AmneziaWG .conf file',
             action: Gtk.FileChooserAction.OPEN,
             modal: true,
         });
@@ -63,7 +63,7 @@ var WireGuardOptions = class {
     _confirm_delete(group, row, _conn_id) {
 
         let conf_win = new Gtk.Window({
-            title: 'Delete Wireguard Connection',
+            title: 'Delete AmneziaWG Connection',
             modal: true,
             destroy_with_parent: true,
             resizable: false,
@@ -142,7 +142,7 @@ var WireGuardOptions = class {
 
     _create_top_label(top_group) {
         const top_label = new Gtk.Label({
-            label: 'Available Wireguard Connection(s)',
+            label: 'Available AmneziaWG Connection(s)',
             valign: Gtk.Align.CENTER,
         });
         top_group.add(top_label);
@@ -150,7 +150,7 @@ var WireGuardOptions = class {
 
     _create_bottom_label(bottom_group) {
         const bottom_label = new Gtk.Label({
-            label: 'Add Wireguard Connection',
+            label: 'Add AmneziaWG Connection',
             valign: Gtk.Align.CENTER,
         });
         bottom_group.add(bottom_label);
@@ -158,7 +158,7 @@ var WireGuardOptions = class {
 
     _create_choose_button(bottom_group) {
         const button1 = new Gtk.Button({
-            label: 'Choose Wireguard Configuration file',
+            label: 'Choose AmneziaWG Configuration file',
             valign: Gtk.Align.CENTER,
             margin_top: '8',
         });
@@ -217,4 +217,3 @@ export default class WireguardPreferences extends ExtensionPreferences {
         });
     }
 }
-
